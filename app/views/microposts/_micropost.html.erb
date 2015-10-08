@@ -12,4 +12,23 @@
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+  <br>
+  <% micropost.comments.each do |comment|%>
+    <div class="comments">
+      <%= image_tag avatar_url(comment.user, 40) %>
+      <span class="user"><%= link_to comment.user.name, comment.user %></span>
+      <span class="content"><%=comment.text %></span>
+      <span class="timestamp">
+        Commented <%= time_ago_in_words(comment.created_at) %> ago.
+      </span>
+    </div>
+  <% end %>
+  <%= form_for(Comment.new) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="input-group">
+      <%= f.text_area :text, placeholder: "Write a comment...", class: "form-control floating-label" %>
+      <%= f.hidden_field :micropost_id, :value => micropost.id %>
+      <%= f.submit "comment", class: "btn btn-primary btn-raised" %>
+    </div>
+  <% end %>
 </li>
