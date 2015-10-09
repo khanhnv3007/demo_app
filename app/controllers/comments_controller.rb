@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
 
+	def index
+    @comments = Comment.all.paginate(page: params[:page], per_page: 10)
+  end
+
 	def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
