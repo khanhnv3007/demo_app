@@ -10,8 +10,8 @@ class CommentsController < ApplicationController
       flash[:success] = "comment created!"
       redirect_to :back
     else
-      @feed_items = []
-      render 'static_pages/home'
+      redirect_to :back
+      flash[:danger] = "can not save!"
     end
   end
 
