@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = "comment created!"
-      redirect_to root_url
+      redirect_to user_path(@comment.micropost.user)
     else
       @feed_items = []
       render 'static_pages/home'
