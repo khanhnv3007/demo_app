@@ -14,7 +14,6 @@
     <% end %>
   </span>
   </div>
-  <%= will_paginate @comments%>
   <% @comments.each do |comment|%>
     <div class="comments">
       <%= image_tag avatar_url(comment.user, 40) %>
@@ -33,4 +32,5 @@
       <%= f.submit "comment", class: "btn btn-primary btn-raised" %>
     </div>
   <% end %>
+  <%= will_paginate @comments%>
 </div>
