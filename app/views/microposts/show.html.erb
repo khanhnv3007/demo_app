@@ -28,7 +28,7 @@
     <%= render 'shared/error_messages', object: f.object %>
     <div class="input-group">
       <%= f.text_area :text, placeholder: "Write a comment...", class: "form-control floating-label" %>
-      <%= f.hidden_field :@micropost_id, :value => @micropost.id %>
+      <%= f.hidden_field :micropost_id, :value => @micropost.id %>
       <%= f.submit "comment", class: "btn btn-primary btn-raised" %>
     </div>
   <% end %>
